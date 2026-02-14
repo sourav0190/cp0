@@ -14,6 +14,9 @@
 
   --spacing-luxury-gap: 8rem;
   --spacing-section-padding: 12rem;
+
+  --shadow-premium: 0 20px 50px rgba(0, 0, 0, 0.5);
+  --border-glass: rgba(255, 255, 255, 0.08);
 }
 
 body {

@@ -112,7 +112,7 @@ const StorySection = ({ children, align = 'center' }) => {
     );
 };
 
-const ExperiencePage = ({ title, subtitle, accent, sections = [] }) => {
+const ExperiencePage = ({ title, subtitle, accent, sections = [], onAskDoubt }) => {
     const containerRef = useRef(null);
     const { scrollYProgress } = useScroll({
         target: containerRef,
@@ -143,21 +143,25 @@ const ExperiencePage = ({ title, subtitle, accent, sections = [] }) => {
 
             <div className="relative z-10">
                 <StorySection>
-                    <h1 className="text-6xl md:text-8xl mb-6 bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">
-                        {title}
-                    </h1>
-                    <p className="text-lg md:text-xl text-white/60 font-light mb-4">{subtitle}</p>
-                    <p className="text-sm text-accent-amber/80 tracking-widest uppercase">Every ingredient placed with intention.</p>
+                    <div className="drop-shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
+                        <h1 className="text-6xl md:text-8xl mb-6 bg-gradient-to-b from-white to-white/80 bg-clip-text text-transparent">
+                            {title}
+                        </h1>
+                        <p className="text-xl md:text-2xl text-white/90 font-light mb-4">{subtitle}</p>
+                        <p className="text-sm text-[#FF8A00] tracking-widest uppercase font-medium">Every ingredient placed with intention.</p>
+                    </div>
                 </StorySection>
 
                 {sections.map((section, idx) => (
                     <StorySection key={idx} align={section.align}>
-                        <h2 className="text-5xl md:text-7xl mb-8 whitespace-pre-line">
-                            {section.heading}
-                        </h2>
-                        <p className={`text-white/60 text-lg md:text-xl leading-relaxed max-w-md ${section.align === 'right' ? 'ml-auto' : ''}`}>
-                            {section.content}
-                        </p>
+                        <div className="drop-shadow-[0_5px_15px_rgba(0,0,0,0.5)]">
+                            <h2 className="text-5xl md:text-7xl mb-8 whitespace-pre-line text-white/95">
+                                {section.heading}
+                            </h2>
+                            <p className={`text-white/80 text-lg md:text-xl leading-relaxed max-w-md ${section.align === 'right' ? 'ml-auto' : ''}`}>
+                                {section.content}
+                            </p>
+                        </div>
                     </StorySection>
                 ))}
 
@@ -167,8 +171,11 @@ const ExperiencePage = ({ title, subtitle, accent, sections = [] }) => {
                     </h2>
                     <p className="text-white/60 text-lg md:text-xl mb-12 italic">Food Bridge — {title.includes('Home') ? 'where tradition meets precision.' : 'our journey of craft.'}</p>
                     <div className="flex items-center justify-center space-x-8 pointer-events-auto">
-                        <button className="bg-white text-black px-10 py-4 rounded-sm font-medium hover:bg-white/90 transition-colors">
-                            Reserve a Table
+                        <button
+                            onClick={onAskDoubt}
+                            className="bg-white text-black px-10 py-4 rounded-sm font-medium hover:bg-white/90 transition-colors"
+                        >
+                            Ask a Doubt
                         </button>
                         <a href="#" className="text-white/70 hover:text-white transition-colors border-b border-white/20 pb-1">
                             View Menu

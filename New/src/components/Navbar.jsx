@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useScroll } from 'framer-motion';
 
-const Navbar = () => {
+const Navbar = ({ onAskDoubt }) => {
     const { scrollY } = useScroll();
     const [isScrolled, setIsScrolled] = useState(false);
     const location = useLocation();
@@ -28,8 +28,9 @@ const Navbar = () => {
                     {[
                         { name: 'Home', path: '/' },
                         { name: 'About', path: '/about' },
-                        { name: 'Craft', path: '#craft' },
-                        { name: 'Experience', path: '#experience' }
+                        { name: 'Discover', path: '/recipes' },
+                        { name: 'Flavor Twin', path: '#flavor-twin' },
+                        { name: 'Food Translator', path: '#food-translator' }
                     ].map((item) => (
                         <Link
                             key={item.name}
@@ -44,8 +45,11 @@ const Navbar = () => {
                     ))}
                 </div>
 
-                <button className="bg-accent-red hover:bg-red-700 text-white px-6 py-2 rounded-sm text-sm font-medium transition-transform active:scale-95">
-                    Reserve a Table
+                <button
+                    onClick={onAskDoubt}
+                    className="bg-accent-red hover:bg-red-700 text-white px-6 py-2 rounded-sm text-sm font-medium transition-transform active:scale-95"
+                >
+                    Ask a Doubt
                 </button>
             </div>
         </nav>
