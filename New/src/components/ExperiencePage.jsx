@@ -112,7 +112,7 @@ const StorySection = ({ children, align = 'center' }) => {
     );
 };
 
-const ExperiencePage = ({ title, subtitle, accent, sections = [] }) => {
+const ExperiencePage = ({ title, subtitle, accent, sections = [], onAskDoubt }) => {
     const containerRef = useRef(null);
     const { scrollYProgress } = useScroll({
         target: containerRef,
